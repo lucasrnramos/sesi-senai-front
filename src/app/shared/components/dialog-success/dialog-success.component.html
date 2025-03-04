@@ -1,0 +1,29 @@
+<div class="min-w-[300px] text-center text-[#676a6c]">
+  <mat-dialog-content>
+    <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6 text-[#00995d]">
+        <div class="mx-auto">
+          <mat-icon class="dialog-icon">task_alt</mat-icon>
+        </div>
+
+        <p class="text-[20px]">Concluído!</p>
+      </div>
+
+      @if(data.length > 0) {
+        <div class="flex flex-col gap-2">
+          @for(item of data; track $index) {
+            <p class="text-[16px]">{{ item }}</p>
+          }
+        </div>
+      }
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="w-full text-center">
+      <button mat-flat-button class="button w-fit" mat-dialog-close>
+        <mat-icon>check</mat-icon>
+        <span>Ok</span>
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

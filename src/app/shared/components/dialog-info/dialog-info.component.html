@@ -1,0 +1,24 @@
+<div class="min-w-[300px] text-center text-[#676a6c]">
+  <mat-dialog-content>
+    <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6 text-[#b7c3c1]">
+        <div class="mx-auto">
+          <mat-icon class="dialog-icon">info</mat-icon>
+        </div>
+        
+        <p class="text-[20px]">Importante!</p>
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        @for(item of data; track $index) {
+          <p class="text-[16px]">{{ item }}</p>
+        }
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="w-full text-center">
+      <button class="button w-fit" mat-dialog-close>Entendi</button>
+    </div>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,26 @@
+<div class="min-w-[300px] text-center text-[#676a6c]">
+  <mat-dialog-content>
+    <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6 [#ffcb08]">
+        <div class="mx-auto">
+          <mat-icon class="dialog-icon">warning</mat-icon>
+        </div>
+        
+        <span class="text-[20px] font-bold">Aviso</span>
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        @for(item of data; track $index) {
+          <p class="text-[16px]">{{ item }}</p>
+        }
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="w-full text-center">
+      <div class="w-fit ml-auto">
+        <button mat-dialog-close buttonIconName="close" buttonIconPosition="start" buttonText="Fechar" buttonTextJustify="end" buttonType="cancel-button"></button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+</div>

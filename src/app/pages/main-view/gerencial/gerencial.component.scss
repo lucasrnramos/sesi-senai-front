@@ -1,0 +1,9 @@
+mat-sidenav {
+  width: 100%;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz com que o componente cresça */
+}

@@ -1,0 +1,115 @@
+<form [formGroup]="formConfigPerfil">
+  <div class="flex flex-col gap-4">
+    <div class="w-full flex flex-wrap gap-4">
+      @if((!enterPassMode() && !enterMailRecPassMode()) || editMode()) {
+        <mat-form-field class="w-[360px] grow sm:w-full">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" formControlName="nome" [readonly]="editMode()">
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('nome')) }}</mat-error>
+        </mat-form-field>
+      }
+
+      @if(!enterPassMode() || editMode()) {
+        <mat-form-field class="w-[360px] grow sm:w-full">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" [readonly]="!enterMailRecPassMode()">
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('email')) }}</mat-error>
+        </mat-form-field>
+      }
+
+      @if((!enterPassMode() && !enterMailRecPassMode()) || editMode()) {
+        <mat-form-field class="w-[220px] grow sm:w-full">
+          <mat-label>CPF</mat-label>
+          <input matInput type="text" formControlName="cpf" [readonly]="editMode()" appCpfMask>
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('cpf')) }}</mat-error>
+        </mat-form-field>
+      }
+
+      @if(!editMode() && !enterMailRecPassMode()) {
+        <mat-form-field class="w-[220px] grow sm:w-full" matTooltip="A senha deve conter números, letras maiúsculas, letras minúsculas e símbolos">
+          <mat-label>Senha</mat-label>
+          <input matInput type="text" formControlName="senha">
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('senha')) }}</mat-error>
+          <mat-progress-bar mode="determinate" [value]="strength()"></mat-progress-bar>
+          <mat-hint [ngClass]="getStrengthColor()" color="danger">{{ strength() <= 25 ? 'Muito fraca' : strength() <= 50 ? 'Fraca' : strength() <= 75 ? 'Média' : 'Forte' }}</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="w-[220px] grow sm:w-full">
+          <mat-label>Confirmar Senha</mat-label>
+          <input matInput type="text" formControlName="confirmarSenha">
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('confirmarSenha')) }}</mat-error>
+          @if(inputValidator.hasError(formConfigPerfil)) {
+            <mat-hint>{{ inputValidator.getErrorMessage(formConfigPerfil) }}</mat-hint>
+          }
+        </mat-form-field>
+      }
+
+      @if((!enterPassMode() && !enterMailRecPassMode()) || editMode()) {
+        @if (editMode()) {
+          <mat-form-field class="w-[260px] sm:w-full">
+            <mat-label>Perfil</mat-label>
+            <mat-select matInput formControlName="id_perfil">
+              @if(observablePerfis$ | async; as response) {
+                @for (item of response.object; track item) {
+                  <mat-option [value]="item.id">{{ item.perfil }}</mat-option>
+                }
+              }
+              @else {
+                <mat-option value="" [disabled]="true">Buscando perfis...</mat-option>
+              }
+            </mat-select>
+            <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('id_perfil')) }}</mat-error>
+          </mat-form-field>
+        }
+
+        <mat-form-field class="w-[200px] sm:w-full">
+          <mat-label>Celular</mat-label>
+          <input matInput type="text" formControlName="celular">
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('celular')) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-[100px] grow sm:w-full">
+          <mat-label>CEP</mat-label>
+          <input matInput type="text" formControlName="cep">
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('cep')) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-[80px] grow sm:w-full">
+          <mat-label>UF</mat-label>
+          <input matInput type="text" formControlName="uf">
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('uf')) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-[360px] grow sm:w-full">
+          <mat-label>Localidade</mat-label>
+          <input matInput type="text" formControlName="localidade">
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('localidade')) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-[360px] grow sm:w-full">
+          <mat-label>Bairro</mat-label>
+          <input matInput type="text" formControlName="bairro">
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('bairro')) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-[360px] grow sm:w-full">
+          <mat-label>Logradouro</mat-label>
+          <input matInput type="text" formControlName="logradouro">
+          <mat-error>{{ inputValidator.getErrorMessage(formConfigPerfil.get('logradouro')) }}</mat-error>
+        </mat-form-field>
+      }
+    </div>
+
+    <div class="w-full flex justify-end gap-4">
+      <button class="w-fit" type="reset" mat-stroked-button>
+        <mat-icon>delete</mat-icon>
+        <span>Limpar Formulário</span>
+      </button>
+
+      <button class="w-fit" type="submit" mat-flat-button (click)="onSubmit()">
+        <mat-icon>save</mat-icon>
+        <span>Salvar</span>
+      </button>
+    </div>
+  </div>
+</form>

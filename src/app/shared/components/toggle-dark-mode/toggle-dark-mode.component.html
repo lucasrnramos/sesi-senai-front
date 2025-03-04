@@ -1,0 +1,42 @@
+<!-- <div class="w-min h-min border-gray-3000 border-2q rounded-full"> -->
+
+
+  <button mat-menu-item [matMenuTriggerFor]="appearance">
+    <mat-icon>style</mat-icon>
+    <span>Aparência</span>
+  </button>
+
+  <mat-menu #appearance>
+    <button mat-menu-item [matMenuTriggerFor]="mode">
+      <mat-icon>contrast</mat-icon>
+      <span>Modo</span>
+    </button>
+
+    <button mat-menu-item [matMenuTriggerFor]="theme">
+      <mat-icon>palette</mat-icon>
+      <span>Tema</span>
+    </button>
+  </mat-menu>
+
+  <mat-menu #mode="matMenu">
+    <button mat-menu-item (click)="setMode('light-mode')" [class.animate-pulse]="!isDarkMode()">
+      <mat-icon>light_mode</mat-icon>
+      <span>Claro</span>
+    </button>
+
+    <button mat-menu-item (click)="setMode('dark-mode')" [class.animate-pulse]="isDarkMode()">
+      <mat-icon>dark_mode</mat-icon>
+      <span>Escuro</span>
+    </button>
+  </mat-menu>
+
+  <mat-menu #theme="matMenu">
+    <button mat-menu-item (click)="setTheme('lead-gray-theme')">Cinza Chumbo</button>
+    <button mat-menu-item (click)="setTheme('dark-green-theme')">Verde Escuro</button>
+    <button mat-menu-item (click)="setTheme('orange-theme')">Laranja</button>
+    <button mat-menu-item (click)="setTheme('purple-theme')">Roxo</button>
+    <button mat-menu-item (click)="setTheme('violet-theme')">Violeta</button>
+    <button mat-menu-item (click)="setTheme('muss-green-theme')">Verde Musgo</button>
+    <button mat-menu-item (click)="setTheme('brown-theme')">Marrom</button>
+    <button mat-menu-item (click)="setTheme('emerald-theme')">Verde Esmeralda</button>
+  </mat-menu>
