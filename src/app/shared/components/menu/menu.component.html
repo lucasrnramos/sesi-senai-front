@@ -1,0 +1,69 @@
+<!-- BUTTON TO OPEN DRAWER MENU (VISIBLE BELOW 1440px)
+<div class="fixed top-0 bottom-0 left-0 flex xl:hidden 2xl:hidden">
+  <div class="text-center self-center">
+    <button type="button" class="w-min h-44 break-all text-center uppercase bg-orange-500 hover:bg-orange-400 rounded-e-xl sm:px-1 sm:text-[10px] md:px-2.5 md:text-[16px] lg:px-3 lg:text-[18px] focus:outline-none" data-drawer-target="menu-drawer" data-drawer-show="menu-drawer" aria-controls="menu-drawer">
+    menu
+    </button>
+  </div>
+</div>
+
+<div id="menu-drawer" class="menu xl:translate-x-0 2xl:translate-x-0" tabindex="-1" aria-labelledby="menu-drawer-label">
+  BUTTON TO CLOSE DRAWER MENU (VISIBLE BELOW 1440px, AFTER OPENING DRAWER MENU)
+  <div class="p-2 inline-flex justify-between xl:hidden 2xl:hidden">
+    <h5 id="menu-drawer-label" class="self-center text-lg uppercase">Menu</h5>
+
+    <button
+    mat-mini-fab
+    type="button"
+    data-drawer-hide="menu-drawer"
+    aria-controls="menu-drawer"
+    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center" >
+      <mat-icon>close</mat-icon>
+      <span class="sr-only">Close menu</span>
+    </button>
+  </div>
+
+  <app-horizontal-divider class="xl:hidden 2xl:hidden"></app-horizontal-divider> -->
+
+<div class="menu">
+  <ng-content></ng-content>
+
+  <mat-nav-list>
+    <!-- <a [routerLink]="[/views/coopmais/consultas/historico-movimentacao]"></a> -->
+    @for (firstLevel of menuItems; track firstLevel.title) {
+      @if(firstLevel.children) {
+        <mat-expansion-panel mat-list-item class="mat-elevation-z0 menu-no-link" [expanded]="false" hideToggle="false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ firstLevel.title }}</mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list role="list">
+            @for (secondLevel of firstLevel.children; track secondLevel.title) {
+              @if(secondLevel.children) {
+                <mat-expansion-panel mat-list-item class="mat-elevation-z0 menu-no-link" [expanded]="false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>{{ secondLevel.title }}</mat-panel-title>
+                  </mat-expansion-panel-header>
+
+                  <mat-nav-list role="list">
+                    @for (thirdLevel of secondLevel.children; track thirdLevel.title) {
+                      @if(!thirdLevel.path?.includes(':')) {
+                        <a mat-list-item role="listitem" class="menu-link" [routerLink]="[firstLevel.path, secondLevel.path, thirdLevel.path]" routerLinkActive="border-pure-blue">{{ thirdLevel.title }}</a>
+                      }
+                    }
+                  </mat-nav-list>
+                </mat-expansion-panel>
+              }
+              @else if(!secondLevel.path?.includes(':')) {
+                <a mat-list-item role="listitem" class="menu-link" [routerLink]="[firstLevel.path, secondLevel.path]" routerLinkActive="border-pure-blue">{{ secondLevel.title }}</a>
+              }
+            }
+          </mat-nav-list>
+        </mat-expansion-panel>
+      }
+      <!-- @else if(!firstLevel.path?.includes(':')) { -->
+      <a mat-list-item role="listitem" class="menu-link" [routerLink]="firstLevel.path" router routerLinkActive="border-pure-blue">{{ firstLevel.title }}</a>
+      <!-- } -->
+    }
+  </mat-nav-list>
+</div>

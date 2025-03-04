@@ -1,0 +1,15 @@
+<div class="page-body">
+  <app-header></app-header>
+
+  <div class="system-view-indoor mb-auto">
+    <div class="system-view-heading">
+      <h1>Finalize Seu Cadastro</h1>
+    </div>
+
+    <div class="system-view-body">
+      <app-registration-form [data]="data" [enterMailRecPassMode]="false" [enterPassMode]="false" [editMode]="false" (formSubmit)="onFormSubmit($event)"></app-registration-form>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

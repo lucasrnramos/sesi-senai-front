@@ -1,0 +1,53 @@
+
+<div class="w-screen h-screen flex-col justify-center items-center gap-32 inline-flex">
+
+  <div class="absolute top-8 right-8">
+    <app-toggle-dark-mode></app-toggle-dark-mode>
+  </div>
+
+  <div class="w-full px-8 justify-center items-stretch inline-flex sm:gap-4 md:gap-8 lg:gap-16 xl:gap-32 2xl:gap-32 3xl:gap-32">
+
+    <div class="flex-col self-center items-center gap-4 inline-flex">
+      <form [formGroup]="formLogin" class="flex-col justify-center items-center gap-4 flex">
+
+        <span class="text-[22px]">Technology Solutions</span>
+
+        <mat-form-field class="w-full">
+          <mat-label>CPF</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <input matInput type="text" formControlName="cpf" placeholder="000.000.000-00" appCpfMask>
+          <mat-error>{{ inputValidator.getErrorMessage(formLogin.get('cpf')) }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Senha</mat-label>
+          <mat-icon matPrefix>key</mat-icon>
+          <input matInput formControlName="senha" [type]="hide() ? 'password' : 'text'" placeholder="Digite sua senha">
+          <button type="button" mat-icon-button matSuffix (click)="clickEvent($event)">
+            <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error>{{ inputValidator.getErrorMessage(formLogin.get('senha')) }}</mat-error>
+        </mat-form-field>
+
+
+        <div class="w-full flex">
+          <button mat-fab extended class="flex-1 flex flex-row" type="submit" (click)="auth()">
+            <mat-icon>login</mat-icon>
+            <span>Acessar</span>
+          </button>
+        </div>
+
+        <a routerLink="/recuperar-senha/_" class="underline underline-offset-4">Esqueci minha senha</a>
+        <a routerLink="/cadastrar" class="underline underline-offset-4">Não possuo cadastro</a>
+      </form>
+    </div>
+
+    <app-divider></app-divider>
+
+    <div class="max-w-[600px] flex flex-1 self-center">
+      <figure class="">
+        <img src="assets/images/escola-sesi-senai-maceio.png" alt="" width="100%">
+      </figure>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="header-body">
+  <div class="flex gap-8 flex flex-row">
+    <ng-content></ng-content>
+
+    <button mat-button class="self-center" routerLink="/main/home">
+      <figure class="">
+        <img src="assets/images/escola-sesi-senai-maceio.png" alt="" width="140">
+      </figure>
+    </button>
+  </div>
+
+  <div class="self-center gap-4 flex items-stretch">
+    @if(logged()) {
+      <button mat-raised-button [matMenuTriggerFor]="menu">
+        <span>{{ getNome() }}</span>
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    }
+    @else {
+      <button mat-raised-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+        <span>Mais</span>
+      </button>
+    }
+
+    <!-- <button mat-raised-button aria-label="Botão de Menu">
+      <mat-icon>more_vert</mat-icon>
+      <span>Menu</span>
+    </button> -->
+
+    <mat-menu #menu="matMenu">
+      <app-toggle-dark-mode></app-toggle-dark-mode>
+
+      @if(logged()) {
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Sair</span>
+        </button>
+      }
+      @else {
+        <button mat-menu-item routerLink="/auth/login">
+          <mat-icon>login</mat-icon>
+          <span>Entrar</span>
+        </button>
+      }
+    </mat-menu>
+  </div>
+</div>

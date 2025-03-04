@@ -1,0 +1,33 @@
+<div class="page-body">
+  <mat-sidenav-container class="main-content-of-page grow">
+    <mat-sidenav class="flex flex-col" #menu [mode]="isMobile() ? 'over' : 'side'" [fixedInViewport]="isMobile()">
+      <app-menu [menuItems]="menuItems" (routerlinkClickEvent)="onClick()">
+        <div class="hidden sm:block md:block w-full flex justify-end">
+          <button mat-mini-fab (click)="menu.close()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </app-menu>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="h-full flex flex-col gap-px">
+        <app-header>
+          <button mat-mini-fab class="w-fit" (click)="menu.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </app-header>
+
+        <div class="h-full flex flex-col grow gap-px">
+          <div class="page-content grow">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+
+        <div class="w-full">
+          <app-footer></app-footer>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

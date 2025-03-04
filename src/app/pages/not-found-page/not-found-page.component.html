@@ -1,0 +1,31 @@
+<div class="page-body">
+  <div class="w-full">
+    <app-header></app-header>
+  </div>
+
+  <div class="page-content w-full h-full flex-col place-content-center gap-16 flex">
+    <div class="w-full self-center items-center flex flex-col gap-16">
+      <div class="w-full flex flex-col gap-4 justify-center text-center">
+        <p class="w-full h-min self-center text-[48px] font-semibold leading-none">OPS!</p>
+
+        <div>
+          <mat-icon class="icon">sentiment_very_dissatisfied</mat-icon>
+        </div>
+
+        <p class="w-full text-[24px] leading-none">A página que você procura não existe.</p>
+      </div>
+
+      <div class="w-full justify-start">
+        <button mat-fab extended (click)="back()">
+          <mat-icon>arrow_back</mat-icon>
+          <span>VOLTAR</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="w-full">
+    <app-footer></app-footer>
+  </div>
+</div>

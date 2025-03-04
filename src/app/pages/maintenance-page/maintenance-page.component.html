@@ -1,0 +1,47 @@
+<div class="page-body">
+
+  <div class="w-full">
+    <app-header></app-header>
+  </div>
+
+  <div class="w-full h-full page-content">
+    <div class="h-full flex-col justify-center items-start gap-16 flex">
+
+      <div class="w-full h-full items-stretch flex gap-16">
+
+        <div class="w-1/2 h-full self-center flex flex-col items-stretch gap-8">
+          <div class="w-full h-min self-center text-[64px] font-bold  leading-[64px] tracking-[3.20px]">
+            PÁGINA EM MANUTENÇÃO
+          </div>
+
+          <div class="w-full h-min self-center justify-start text-base font-normal">
+            Esta página está em manutenção. Por favor, retorne em alguns instantes.
+          </div>
+        </div>
+
+        <app-divider></app-divider>
+
+        <div class="w-1/2 h-min self-stretch flex-col justify-center items-start gap-16 flex">
+          <div class="h-max w-full mx-auto items-center flex">
+            <div class="w-full place-items-center">
+              <img class="m-auto" src="../../../../assets/images/maintenance.svg" width="80%" height="80%" alt="Logo manutencao">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="self-stretch w-full h-full my-0 flex-col justify-center items-start flex">
+        <button mat-fab extended routerLink="/modulos">
+          <mat-icon></mat-icon>
+          <span>VOLTAR AO INÍCIO</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="w-full">
+    <app-footer></app-footer>
+  </div>
+
+</div>

@@ -1,0 +1,234 @@
+@use '@angular/material' as mat;
+
+@use './theme-lead-gray-colors' as lead-gray-theme;
+@use './theme-dark-green-colors' as dark-green-theme;
+
+@use './theme-orange-colors' as orange-theme;
+@use './theme-purple-colors' as purple-theme;
+
+@use './theme-violet-colors' as violet-theme;
+@use './theme-muss-green-colors' as muss-green-theme;
+
+@use './theme-brown-colors' as brown-theme;
+@use './theme-emerald-colors' as emerald-theme;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato-Regular.ttf') format('truetype');
+}
+
+html {
+  @include mat.theme((
+    typography: Lato,
+    density: 0,
+  ));
+}
+
+html.lead-gray-theme {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      theme-type: color-scheme,
+      primary: lead-gray-theme.$primary-palette,
+      tertiary: lead-gray-theme.$tertiary-palette,
+    )
+  ));
+}
+
+
+html.dark-green-theme {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      theme-type: color-scheme,
+      primary: dark-green-theme.$primary-palette,
+      tertiary: dark-green-theme.$tertiary-palette,
+    )
+  ));
+}
+
+html.orange-theme {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      theme-type: color-scheme,
+      primary: orange-theme.$primary-palette,
+      tertiary: orange-theme.$tertiary-palette,
+    )
+  ));
+}
+
+// Tema Roxo
+html.purple-theme {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      theme-type: color-scheme,
+      primary: purple-theme.$primary-palette,
+      tertiary: purple-theme.$tertiary-palette,
+    )
+  ));
+}
+
+// Adicione o mesmo padrão para os outros temas
+html.violet-theme {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      theme-type: color-scheme,
+      primary: violet-theme.$primary-palette,
+      tertiary: violet-theme.$tertiary-palette,
+    )
+  ));
+}
+
+html.muss-green-theme {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      theme-type: color-scheme,
+      primary: muss-green-theme.$primary-palette,
+      tertiary: muss-green-theme.$tertiary-palette,
+    )
+  ));
+}
+
+html.brown-theme {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      theme-type: color-scheme,
+      primary: brown-theme.$primary-palette,
+      tertiary: brown-theme.$tertiary-palette,
+    )
+  ));
+}
+
+html.emerald-theme {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      theme-type: color-scheme,
+      primary: emerald-theme.$primary-palette,
+      tertiary: emerald-theme.$tertiary-palette,
+    )
+  ));
+}
+
+html.dark-mode {
+  color-scheme: dark;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+}
+
+
+:root {
+  @include mat.card-overrides((
+    outlined-container-shape: 14px,
+    outlined-container-color: var(--mat-sys-primary-container),
+    subtitle-text-color:  var(--mat-sys-on-primary-container),
+  ));
+
+  @include mat.tabs-overrides((
+    divider-height: 24px,
+    divider-color: transparent
+  ));
+
+  @include mat.sidenav-overrides((
+    container-shape: 0px,
+    container-divider-color: var(--mat-sys-outline-variant),
+    container-width: fit-content
+  ));
+
+  @include mat.fab-overrides((
+    extended-container-shape: 12px
+  ));
+
+  @include mat.bottom-sheet-overrides((
+    container-shape: 16px
+  ));
+
+  app-menu {
+    @include mat.expansion-overrides((
+      container-shape: 4px,
+      container-background-color: transparent
+    ));
+
+    @include mat.list-overrides((
+      active-indicator-shape: 4px,
+      list-item-container-shape: 4px,
+      list-item-leading-avatar-shape: 4px
+    ));
+  }
+
+  .link-active {
+    border: 1px solid var(--mat-sys-outline-variant),
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Lato, Roboto, "Helvetica Neue", sans-serif; }
+
+@layer base {
+  th, td {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .header-body {
+    @apply w-full h-min px-8 py-2 rounded-lg justify-between items-center flex;
+  }
+
+  .page-body {
+    @apply w-full max-w-[1921px] mx-auto h-screen py-4 flex flex-col items-stretch gap-2;
+  }
+
+  .page-content {
+    @apply w-full h-full p-8 sm:p-0 flex flex-col rounded-lg;
+  }
+
+  .system-title-block {
+    @apply w-full px-[5%] py-8 sm:py-4 md:py-4 rounded-lg;
+  }
+
+  .system-view-indoor {
+    @apply w-full flex flex-col gap-4 overflow-x-hidden;
+  }
+
+  .system-view-heading {
+    @apply w-full text-center font-semibold flex flex-col gap-4 text-[24px];
+  }
+
+  .system-view-body {
+    @apply w-full h-full p-4 sm:p-2 flex flex-col gap-4;
+  }
+
+  .medium-card {
+    @apply w-full min-w-[250px] max-w-full min-h-[208px] m-0 p-8 rounded-lg items-start flex-col flex inline-flex;
+  }
+
+  .footer-body {
+    @apply w-full h-min static bottom-0 px-8 py-2 rounded-lg text-center;
+  }
+
+  .main-content-of-page {
+    @apply inline-flex w-full gap-8;
+  }
+
+  .menu {
+    @apply h-full text-[18px] flex flex-col grow p-6 rounded-lg;
+  }
+
+  .menu-link {
+    @apply border-0 border-transparent border-l-[3px] hover:border-[var(--mat-sys-outline-variant)];
+  }
+
+  .menu-no-link {
+    @apply border-0 border-transparent border-l-[3px] hover:border-[var(--mat-sys-secondary)];
+  }
+}

@@ -1,0 +1,30 @@
+<div class="min-w-[300px] text-center text-[#676a6c]">
+  <mat-dialog-content>
+    <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6 text-pure-red">
+        <div class="mx-auto">
+          <mat-icon class="dialog-icon">report</mat-icon>
+        </div>
+
+        <p class="text-[20px] font-bold">Ocorreu um erro</p>
+      </div>
+
+      <div class="flex flex-col gap-2 text-[16px]">
+        @if(data.code) {
+          <p><b>Código do erro:&nbsp;</b>{{ data.code }}</p>
+        }
+        @if(data.message) {
+          <p><b>Mensagem:&nbsp;</b>{{ data.message }}</p>
+        }
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="w-full flex flex-row justify-end">
+      <button class="w-fit" mat-flat-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+        <span>Fechar</span>
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

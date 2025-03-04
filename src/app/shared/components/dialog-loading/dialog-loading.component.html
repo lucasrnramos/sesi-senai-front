@@ -1,0 +1,17 @@
+<div class="min-w-[300px] text-center text-[#676a6c]">
+  <mat-dialog-content>
+    <div class="text-center flex flex-col gap-4">
+      <p class="text-[22px]">Aguarde!</p>
+      <div class="w-min mx-auto">
+        <mat-spinner></mat-spinner>
+      </div>
+      @if(data) {
+        @for(item of data; track item) {
+          <p class="text-[18px]"> {{ item }} </p>
+        }
+      } @else {
+        <p class="text-[18px]">Estamos processando sua solicitação</p>
+      }
+    </div>
+  </mat-dialog-content>
+</div>
